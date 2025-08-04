@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
 	const [lista, setLista] = useState([])
 	const [tarea, setTarea] = useState("")
@@ -45,7 +41,7 @@ const Home = () => {
 			});
 			if (response.status == 201) {
 				mostrarTarea()
-				setTarea(""); // Limpiar el input
+				setTarea(""); 
 			}
 		} catch (error) {
 			console.log(error);
@@ -81,10 +77,9 @@ const Home = () => {
 				onKeyDownCapture={(e) => e.key === "Enter" ? agregarTarea(e) : null}
 			/>
 
-			{/* muestra la lista de tareas */}
 			<ul className="list-group mt-3">
-				{lista.map((tarea, index) => ( //map recorre mi array uno x uno que recorra la lista
-					<li className="list-group-item" key={index}>          {/* // colocamos key por el map  */}
+				{lista.map((tarea, index) => ( 
+					<li className="list-group-item" key={index}> 
 						{tarea.label}
 						{/* borrar tareas */}
 						<button className="btn btn-outline-danger float-end icono" onClick={() => borrarTarea(tarea.id)}>X</button>
